@@ -5,7 +5,7 @@ using namespace std;
 //template<typename T> or tempelate<class T> are same
 template<typename T>
 
-//This search function shows use of Containers
+//This search function shows use of Tempelate
 int Search(T arr[],int n,T key){
     for(int p=0;p<n;p++){
         if(arr[p]==key) return p;
