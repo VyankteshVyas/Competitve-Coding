@@ -3,18 +3,10 @@
 
 using namespace std;
 
-// imp links : https://www.geeksforgeeks.org/structures-in-cpp/
-//https://www.geeksforgeeks.org/difference-c-structures-c-structures/
-
+//imp :https://www.geeksforgeeks.org/deletion-binary-tree/
 struct Node{
-    //Data members
     int key;
-    //here did mistake of writing Node* left,right instead of Node *left,*right
     Node *left,*right;
-    //we have not used functions here inside structure.member functions are allowed and they are
-    //exactly same as fuctions inside class. we can access them the way we access data members.
-
-    //Constructor feature inside structure in c++ not avalilable in c
     Node(int val){
         key=val;
         left=right=NULL;
@@ -22,24 +14,28 @@ struct Node{
 };
 
 void inorder(Node *node){
+
     if(!node) return;
 
     inorder(node->left);
+
     cout<<node->key<<" ";
+
     inorder(node->right);
+
 }
 
-void insert(Node* node,int key){
+void insert(Node *node,int key){
     queue<Node*> q;
     q.push(node);
 
     while(!q.empty()){
-        Node* temp=q.front();
+        Node *temp=q.front();
         q.pop();
         if(temp->left){
             q.push(temp->left);
         }else{
-            Node* temp1=new Node(key);
+            Node *temp1=new Node(key);
             temp->left=temp1;
             break;
         }
@@ -47,13 +43,36 @@ void insert(Node* node,int key){
         if(temp->right){
             q.push(temp->right);
         }else{
-            Node* temp1=new Node(key);
+            Node *temp1=new Node(key);
             temp->right=temp1;
             break;
         }
+    }
+}
 
+Node* deletion(Node *node,int key){
+    if(node==NULL||(node->left==NULL&&node->right==NULL&&node->key==key)) return NULL;
+    queue<Node*> q;
+    q.push(node);
+
+    Node *keynode=NULL;
+    Node *temp=q.front();
+    while(!q.empty()){
+        temp=q.front();
+        q.pop();
+        if(temp->key==key){
+            keynode=temp;
+        }
+        if(temp->left)q.push(temp->left);
+
+        if(temp->right) q.push(temp->right);
+    }
+    if(keynode!=NULL){
+        keynode->key=temp->key;
+        temp=NULL;
     }
 
+    return node;
 }
 
 int main() {
@@ -73,7 +92,7 @@ int main() {
 
     inorder(root);
     cout<<endl;
-    insert(root,12);
+    root=deletion(root,11);
     inorder(root);
 
     return 0;
