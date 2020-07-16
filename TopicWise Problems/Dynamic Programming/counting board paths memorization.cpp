@@ -9,7 +9,7 @@ void pri(vector<int> v){
         cout<<v[i];
     }
 }
-int cbp(int s,int d,vector<int> v){
+int cbp(int s,int d,vector<int> &v){
     if(s>d) return 0;
     if(s==d) return 1;
 
