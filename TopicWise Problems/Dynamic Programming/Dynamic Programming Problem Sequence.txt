@@ -1,0 +1,25 @@
+finonacci memo
+count board path(tabulated)
+fibonacci slider
+count board path slider
+count maze path slider
+max size sq submatrix of all 1(tab)
+max size sq submatrix of all 1 (memo)
+goldmine (tab)
+goldmine (memo)
+palindromic substring(tab)
+rod cutting(tab)
+rod cutting (memo)
+coin change comb(tab)
+coin change comb(memo)
+coin change perm(tab)
+coin change perm(memo)
+longest increasing subseq(tab)
+longest increasing subseq(memo)
+longest bitonic subseq(tab)
+minimum palindromic sut(memo)
+minimum palindromic sut(tab)
+matrix chain mult(memo)
+matrix chain mult(tab)
+egg drop(memo)
+egg drop(tab)
