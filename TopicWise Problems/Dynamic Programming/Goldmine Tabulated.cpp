@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -26,37 +27,37 @@ void Goldmine(vector<vector<int>> &mine){
         for(int r=0;r<=dr;r++){
             if(c==dc){
                 smine[r][c]=mine[r][c];
-                path[r][c]=r+"_"+c;
+                path[r][c]=to_string(r)+"_"+to_string(c);
             }else{
                 if(r==0){
                     if(smine[r][c+1]>smine[r+1][c+1]){
                         smine[r][c]=mine[r][c]+smine[r][c+1];
-                        path[r][c]=r+"_"+c+path[r][c+1];
+                        path[r][c]=to_string(r)+"_"+to_string(c)+path[r][c+1];
                     }else{
                         smine[r][c]=mine[r][c]+smine[r+1][c+1];
-                        path[r][c]=r+"_"+c+path[r+1][c+1];
+                        path[r][c]=to_string(r)+"_"+to_string(c)+path[r+1][c+1];
                     }
 
                 }else{
                     if(r==dr){
                             if(smine[r][c+1]>smine[r-1][c+1]){
                             smine[r][c]=mine[r][c]+smine[r][c+1];
-                            path[r][c]=r+"_"+c+path[r][c+1];
+                            path[r][c]=to_string(r)+"_"+to_string(c)+path[r][c+1];
                         }else{
                             smine[r][c]=mine[r][c]+smine[r-1][c+1];
-                            path[r][c]=r+"_"+c+path[r-1][c+1];
+                            path[r][c]=to_string(r)+"_"+to_string(c)+path[r-1][c+1];
                         }
                     }else{
                         if((smine[r][c+1]>=smine[r+1][c+1])&&(smine[r][c+1]>=smine[r-1][c+1])){
                             smine[r][c]=mine[r][c]+smine[r][c+1];
-                            path[r][c]=r+"_"+c+path[r][c+1];
+                            path[r][c]=to_string(r)+"_"+to_string(c)+path[r][c+1];
                         }else{
                             if((smine[r-1][c+1]>=smine[r][c+1])&&(smine[r-1][c+1]>=smine[r+1][c+1])){
                                 smine[r][c] = mine[r][c] + smine[r-1][c+1];
-                                path[r][c]= r+"_"+c+path[r-1][c+1];
+                                path[r][c]= to_string(r)+"_"+to_string(c)+path[r-1][c+1];
                             }else{
                                 smine[r][c] = mine[r][c] + smine[r+1][c+1];
-                                path[r][c]= r+"_"+c+path[r+1][c+1];
+                                path[r][c]= to_string(r)+"_"+to_string(c)+path[r+1][c+1];
                             }
                         }
                     }
@@ -69,7 +70,7 @@ void Goldmine(vector<vector<int>> &mine){
             }
         }
     }
-
+    cout<<ovmax<<endl;
     cout<<path[ovr][ovc];
 }
 
