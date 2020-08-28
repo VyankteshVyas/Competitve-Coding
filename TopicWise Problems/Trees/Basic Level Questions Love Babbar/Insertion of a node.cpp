@@ -10,7 +10,7 @@ struct Node{
     }
 };
 
-void inorder(Node *temp){
+void levelorder(Node *temp){
     if(!temp) return ;
 
     inorder(temp->left);
@@ -50,14 +50,14 @@ int main(){
     root->right->right = new Node(8);
 
     cout << "Inorder traversal before insertion:";
-    inorder(root);
+    levelorder(root);
 
     int key = 12;
     insert(root, key);
 
     cout << endl;
     cout << "Inorder traversal after insertion:";
-    inorder(root);
+    levelorder(root);
 
     return 0;
 }
