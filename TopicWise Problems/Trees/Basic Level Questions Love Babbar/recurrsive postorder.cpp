@@ -10,12 +10,13 @@ struct Node{
     }
 };
 
-void inorder(Node *temp){
+
+void postorder(Node *temp){
     if(!temp) return ;
 
-    inorder(temp->left);
+    postorder(temp->left);
+    postorder(temp->right);
     cout<<temp->key<<" ";
-    inorder(temp->right);
 }
 
 void insert(Node *temp,int key){
@@ -49,15 +50,8 @@ int main(){
     root->right->left = new Node(15);
     root->right->right = new Node(8);
 
-    cout << "Inorder traversal before insertion:";
-    inorder(root);
-
-    int key = 12;
-    insert(root, key);
-
-    cout << endl;
-    cout << "Inorder traversal after insertion:";
-    inorder(root);
-
+    cout<<"Post order recurrsive :";
+    postorder(root);
+    cout<<"\n";
     return 0;
 }

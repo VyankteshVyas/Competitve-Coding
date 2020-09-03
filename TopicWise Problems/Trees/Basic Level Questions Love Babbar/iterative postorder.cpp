@@ -10,13 +10,32 @@ struct Node{
     }
 };
 
-void inorder(Node *temp){
-    if(!temp) return ;
+void iterativePostOrder(Node *temp){
+    if(temp==NULL){
+        return;
+    }
 
-    inorder(temp->left);
-    cout<<temp->key<<" ";
-    inorder(temp->right);
+    stack<Node*> s1,s2;
+    s1.push(temp);
+    while(!s1.empty()){
+        Node* temp=s1.top();
+        s1.pop();
+        s2.push(temp);
+        if(temp->left){
+            s1.push(temp->left);
+        }
+        if(temp->right){
+            s1.push(temp->right);
+        }
+    }
+
+    while(!s2.empty()){
+        Node *temp=s2.top();
+        s2.pop();
+        cout<<temp->key<<" ";
+    }
 }
+
 
 void insert(Node *temp,int key){
     queue<Node*> q;
@@ -49,15 +68,8 @@ int main(){
     root->right->left = new Node(15);
     root->right->right = new Node(8);
 
-    cout << "Inorder traversal before insertion:";
-    inorder(root);
-
-    int key = 12;
-    insert(root, key);
-
-    cout << endl;
-    cout << "Inorder traversal after insertion:";
-    inorder(root);
-
+    cout<<"Post order iterative :";
+    iterativePostOrder(root);
+    cout<<"\n";
     return 0;
 }
